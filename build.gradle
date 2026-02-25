@@ -1,0 +1,2 @@
+// API module - public interfaces for PillarsOfFortune
+// Dependencies (Paper API, Lombok) are inherited from root build.gradle
