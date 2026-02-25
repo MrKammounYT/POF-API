@@ -5,6 +5,7 @@
 ![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
 
 The official developer API for the **PillarsOfFortune** Minecraft minigame plugin by Eagle Studios.
+https://builtbybit.com/resources/pillars-of-fortune.48036/
 
 ---
 
