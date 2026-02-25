@@ -1,5 +1,13 @@
 # PillarsOfFortune API
 
+![Version](https://img.shields.io/badge/version-2.0.7-blue)
+![MC Version](https://img.shields.io/badge/minecraft-1.21.5-green)
+![License](https://img.shields.io/badge/license-All%20Rights%20Reserved-red)
+
+The official developer API for the **PillarsOfFortune** Minecraft minigame plugin by Eagle Studios.
+
+---
+
 ## Table of Contents
 - [Setup](#setup)
 - [Getting the API Instance](#getting-the-api-instance)
@@ -7,6 +15,7 @@
 - [Arenas](#arenas)
 - [Events](#events)
 - [Enums](#enums)
+- [Full Example Plugin](#full-example-plugin)
 
 ---
 
@@ -14,17 +23,35 @@
 
 ### 1. Add the dependency
 
-Add the POF API module to your repo:
-## Dependency (Maven)
+#### JitPack (Recommended)
+
+**Gradle**
+```gradle
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    compileOnly 'com.github.MrKammounYT:POF-API:main-SNAPSHOT'
+}
+```
+
+**Maven**
+```xml
+<repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+</repository>
+
 <dependency>
-    <groupId>com.eagle.studios</groupId>
-    <artifactId>api</artifactId>
-    <version>2.0.7</version>
+    <groupId>com.github.MrKammounYT</groupId>
+    <artifactId>POF-API</artifactId>
+    <version>main-SNAPSHOT</version>
     <scope>provided</scope>
 </dependency>
+```
 
-## Dependency (Gradle)
-compileOnly 'com.eagle.studios:api:2.0.7'
+---
 
 ### 2. Declare the dependency in plugin.yml
 
@@ -54,7 +81,7 @@ if (POFProvider.isAvailable()) {
 }
 ```
 
-> `getAPI()` throws `IllegalStateException` if POF is not loaded yet, so always use it after your plugin's `onEnable()`.
+> `getAPI()` throws `IllegalStateException` if POF is not loaded yet, so always call it inside `onEnable()` or later.
 
 ---
 
@@ -236,12 +263,12 @@ public void onArenaQuit(POFArenaQuitEvent event) {
 
 ### POFArenaStateChangeEvent
 
-Fired when an arena changes state (e.g. WAITING -> STARTING -> INPROGRESS).
+Fired when an arena changes state (e.g. WAITING → STARTING → INPROGRESS).
 
 ```java
 @EventHandler
 public void onStateChange(POFArenaStateChangeEvent event) {
-    POFArena arena    = event.getArena();
+    POFArena arena     = event.getArena();
     GameState oldState = event.getOldState();
     GameState newState = event.getNewState();
 
@@ -259,8 +286,8 @@ Fired when a player is eliminated during a game.
 @EventHandler
 public void onElimination(POFPlayerElimination event) {
     Player eliminated = event.getPlayer();
-    Player killer      = event.getKiller(); // nullable
-    POFArena arena     = event.getArena();
+    Player killer     = event.getKiller(); // nullable
+    POFArena arena    = event.getArena();
     EntityDamageEvent.DamageCause cause = event.getDeathCause();
 
     if (killer != null) {
@@ -276,7 +303,7 @@ Fired when a player wins a game.
 ```java
 @EventHandler
 public void onWin(POFWinEvent event) {
-    Player winner = event.getPlayer();
+    Player winner  = event.getPlayer();
     POFArena arena = event.getArena();
     Bukkit.broadcastMessage(winner.getName() + " won in " + arena.getDisplayName() + "!");
 }
@@ -300,8 +327,8 @@ Fired when a player's stats are modified (unless `fireEvents` is disabled).
 ```java
 @EventHandler
 public void onStatsChange(PofPlayerStatsChangeEvent event) {
-    Player player    = event.getPlayer();
-    StatTypes type   = event.getStatType();
+    Player player  = event.getPlayer();
+    StatTypes type = event.getStatType();
 
     if (type == StatTypes.COINS_ADD) {
         // player received coins
