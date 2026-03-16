@@ -1,14 +1,38 @@
-// API module - public interfaces for PillarsOfFortune
-// Dependencies (Paper API, Lombok) are inherited from root build.gradle
-apply plugin: 'maven-publish'
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.github.MrKammounYT'
+version = '1.0'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.21.5-R0.1-SNAPSHOT'
+    compileOnly 'org.jetbrains:annotations:24.1.0'
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
 
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId = 'com.github.MrKammounYT'
-            artifactId = 'PillarsOfFortune'
-            version = project.version
-
             from components.java
         }
     }

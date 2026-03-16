@@ -15,10 +15,16 @@ public class POFArenaJoinEvent extends Event {
     private final POFArena arena;
     @NotNull
     private final Player player;
+    private final boolean fromParty;
 
     public POFArenaJoinEvent(@NotNull POFArena arena, @NotNull Player player) {
+        this(arena, player, false);
+    }
+
+    public POFArenaJoinEvent(@NotNull POFArena arena, @NotNull Player player, boolean fromParty) {
         this.arena = arena;
         this.player = player;
+        this.fromParty = fromParty;
     }
 
     @Override
