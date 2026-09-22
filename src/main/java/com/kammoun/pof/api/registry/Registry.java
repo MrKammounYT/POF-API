@@ -31,17 +31,33 @@ public interface Registry<T extends Keyed> {
      * Registers a value under its own key.
      *
      * @param value the value to register
+     * @param owner whoever is registering it, so it can be removed again with {@link #unregisterAll(RegistryOwner)}
      * @throws IllegalArgumentException if a value with the same key is already registered
      */
-    void register(@NotNull T value);
+    void register(@NotNull T value, @NotNull RegistryOwner owner);
 
     /**
-     * Removes the value registered under a key, for example when the plugin that registered it disables.
+     * Removes the value registered under a key.
      *
      * @param key the key to remove
      * @return true if a value was removed
      */
     boolean unregister(@NotNull Key key);
+
+    /**
+     * Removes everything an owner registered, for example when an addon unloads.
+     *
+     * @param owner the owner whose values to remove
+     * @return the number of values removed
+     */
+    int unregisterAll(@NotNull RegistryOwner owner);
+
+    /**
+     * @param key the key to look up
+     * @return whoever registered the value under the key, or empty if nothing is registered there
+     */
+    @NotNull
+    Optional<RegistryOwner> getOwner(@NotNull Key key);
 
     /**
      * @param key the key to look up

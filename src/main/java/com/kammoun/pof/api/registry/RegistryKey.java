@@ -1,6 +1,7 @@
 package com.kammoun.pof.api.registry;
 
 import com.kammoun.pof.api.POFAPI;
+import com.kammoun.pof.api.mode.ItemMode;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.Keyed;
 import org.jetbrains.annotations.NotNull;
@@ -13,6 +14,11 @@ import org.jetbrains.annotations.NotNull;
  * @param <T> the type of value in the registry
  */
 public final class RegistryKey<T extends Keyed> implements Keyed {
+
+    /**
+     * How items are delivered during a match (Normal, Balanced, Shuffle, Swapper).
+     */
+    public static final RegistryKey<ItemMode> ITEM_MODE = create("item_mode", ItemMode.class);
 
     private final Key key;
     private final Class<T> type;
