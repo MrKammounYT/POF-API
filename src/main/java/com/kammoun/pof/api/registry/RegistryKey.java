@@ -1,6 +1,7 @@
 package com.kammoun.pof.api.registry;
 
 import com.kammoun.pof.api.POFAPI;
+import com.kammoun.pof.api.cosmetic.Cosmetic;
 import com.kammoun.pof.api.kit.Kit;
 import com.kammoun.pof.api.mode.ItemMode;
 import net.kyori.adventure.key.Key;
@@ -25,6 +26,11 @@ public final class RegistryKey<T extends Keyed> implements Keyed {
      * Starting loadouts a player can take into a match.
      */
     public static final RegistryKey<Kit> KIT = create("kit", Kit.class);
+
+    /**
+     * Cages, death cries, kill messages and win celebrations, all in one registry.
+     */
+    public static final RegistryKey<Cosmetic> COSMETIC = create("cosmetic", Cosmetic.class);
 
     private final Key key;
     private final Class<T> type;
