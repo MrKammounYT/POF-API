@@ -1,6 +1,7 @@
 package com.kammoun.pof.api.registry;
 
 import com.kammoun.pof.api.POFAPI;
+import com.kammoun.pof.api.kit.Kit;
 import com.kammoun.pof.api.mode.ItemMode;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.Keyed;
@@ -19,6 +20,11 @@ public final class RegistryKey<T extends Keyed> implements Keyed {
      * How items are delivered during a match (Normal, Balanced, Shuffle, Swapper).
      */
     public static final RegistryKey<ItemMode> ITEM_MODE = create("item_mode", ItemMode.class);
+
+    /**
+     * Starting loadouts a player can take into a match.
+     */
+    public static final RegistryKey<Kit> KIT = create("kit", Kit.class);
 
     private final Key key;
     private final Class<T> type;
