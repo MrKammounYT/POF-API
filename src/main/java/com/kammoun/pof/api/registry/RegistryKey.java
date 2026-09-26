@@ -1,9 +1,12 @@
 package com.kammoun.pof.api.registry;
 
 import com.kammoun.pof.api.POFAPI;
+import com.kammoun.pof.api.cosmetic.CelebrationEffectType;
 import com.kammoun.pof.api.cosmetic.Cosmetic;
 import com.kammoun.pof.api.kit.Kit;
+import com.kammoun.pof.api.mode.GameMode;
 import com.kammoun.pof.api.mode.ItemMode;
+import com.kammoun.pof.api.mode.MapMode;
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.key.Keyed;
 import org.jetbrains.annotations.NotNull;
@@ -18,9 +21,25 @@ import org.jetbrains.annotations.NotNull;
 public final class RegistryKey<T extends Keyed> implements Keyed {
 
     /**
-     * How items are delivered during a match (Normal, Balanced, Shuffle, Swapper).
+     * How items are delivered during a match (Normal, Balanced, Shuffle, Swapper). One is active at a time.
      */
     public static final RegistryKey<ItemMode> ITEM_MODE = create("item_mode", ItemMode.class);
+
+    /**
+     * Rule changes applied to a match (no PvP, double items). Any number can be active at once.
+     */
+    public static final RegistryKey<GameMode> GAME_MODE = create("game_mode", GameMode.class);
+
+    /**
+     * What the map does to a match (Rising Lava, Fragile Blocks). Any number can be active at once.
+     */
+    public static final RegistryKey<MapMode> MAP_MODE = create("map_mode", MapMode.class);
+
+    /**
+     * The kinds of effect a win celebration can be built from, naming what owners write as {@code type:}.
+     */
+    public static final RegistryKey<CelebrationEffectType> CELEBRATION_EFFECT =
+            create("celebration_effect", CelebrationEffectType.class);
 
     /**
      * Starting loadouts a player can take into a match.
