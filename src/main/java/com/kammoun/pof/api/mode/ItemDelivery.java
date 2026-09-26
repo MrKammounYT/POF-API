@@ -47,4 +47,15 @@ public interface ItemDelivery {
      * @param item   the item to give
      */
     void give(@NotNull Player player, @NotNull ItemStack item);
+
+    /**
+     * Empties a player's inventory of everything the match does not protect, for a mode that hands out a fresh
+     * set of items rather than adding to the old one.
+     * <p>
+     * What survives is POF's decision, not the mode's: armor and the off hand always, and the slots of a kit
+     * that asked to keep them. A mode therefore never needs to know what a kit is.
+     *
+     * @param player the player whose inventory to clear
+     */
+    void clearUnprotected(@NotNull Player player);
 }

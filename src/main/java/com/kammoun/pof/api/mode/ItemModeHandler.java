@@ -20,11 +20,15 @@ public interface ItemModeHandler {
 
     /**
      * Called once a second while the match is being played, whether or not items are due this second. A mode
-     * with a rhythm of its own, such as shuffling inventories, counts here.
+     * with a rhythm of its own, such as wiping inventories every so often, keeps time here.
+     * <p>
+     * The delivery is the same one {@link #deliver} would be handed, so a mode may hand out or clear items on
+     * its own schedule rather than only when the item timer fires.
      *
      * @param elapsedSeconds how long the match has been running
+     * @param delivery       who is playing, where items come from, and how to hand them over
      */
-    default void onTick(int elapsedSeconds) {
+    default void onTick(int elapsedSeconds, @NotNull ItemDelivery delivery) {
     }
 
     /**
