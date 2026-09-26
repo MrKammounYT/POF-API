@@ -1,5 +1,8 @@
 package com.kammoun.pof.api.mode;
 
+import org.bukkit.Location;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -23,6 +26,27 @@ public interface MapModeHandler {
      * @param elapsedSeconds how long the match has been running
      */
     void onTick(int elapsedSeconds);
+
+    /**
+     * Called after a living player places a block that POF allowed, so a mode can remember what is the map and
+     * what somebody built.
+     *
+     * @param player the player who placed it
+     * @param block  the block as it now stands in the world
+     */
+    default void onBlockPlaced(@NotNull Player player, @NotNull Block block) {
+    }
+
+    /**
+     * Called whenever a living player moves, which is many times a second for every player in the match, so
+     * this must stay cheap: check a coordinate, do not walk the world. Use {@link #onTick} for anything that
+     * only needs to happen once a second.
+     *
+     * @param player the player who moved
+     * @param to     where they have moved to
+     */
+    default void onPlayerMoved(@NotNull Player player, @NotNull Location to) {
+    }
 
     /**
      * Called when the match ends, however it ends. The world is deleted shortly afterwards, so anything placed
