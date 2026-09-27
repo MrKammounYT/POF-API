@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
  * A starting loadout a player can take into a match, for example {@code pof:starter}.
  * <p>
  * Registered in the {@link com.kammoun.pof.api.registry.RegistryKey#KIT} registry. POF's own kits are defined
- * in {@code kits.yml}, so this interface only identifies one: a kit is items, armor and potion effects handed
+ * in {@code cosmetics/kits.yml}, so this interface only identifies one: a kit is items, armor and potion effects handed
  * out when the match starts, never an ability or a cooldown.
  */
 public interface Kit extends Keyed {
