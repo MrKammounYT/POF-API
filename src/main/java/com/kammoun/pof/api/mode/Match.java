@@ -20,7 +20,6 @@ import java.util.Set;
  * keeps control of joining, elimination and the state machine.
  *
  * @see ItemModeHandler
- * @see GameModeHandler
  * @see MapModeHandler
  */
 @ApiStatus.NonExtendable

@@ -12,7 +12,7 @@ import java.util.Set;
  * One round of the item timer, handed to an {@link ItemModeHandler} so it can decide who gets what.
  * <p>
  * An item mode never touches an inventory itself: it asks for items and calls {@link #give}, and POF decides
- * what happens when the inventory is full. That is also what lets a game mode run the same round twice.
+ * what happens when the inventory is full.
  */
 @ApiStatus.NonExtendable
 public interface ItemDelivery {

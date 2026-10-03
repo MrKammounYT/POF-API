@@ -4,7 +4,6 @@ import com.kammoun.pof.api.POFAPI;
 import com.kammoun.pof.api.cosmetic.CelebrationEffectType;
 import com.kammoun.pof.api.cosmetic.Cosmetic;
 import com.kammoun.pof.api.kit.Kit;
-import com.kammoun.pof.api.mode.GameMode;
 import com.kammoun.pof.api.mode.ItemMode;
 import com.kammoun.pof.api.mode.MapMode;
 import net.kyori.adventure.key.Key;
@@ -24,11 +23,6 @@ public final class RegistryKey<T extends Keyed> implements Keyed {
      * How items are delivered during a match (Normal, Balanced, Shuffle, Swapper). One is active at a time.
      */
     public static final RegistryKey<ItemMode> ITEM_MODE = create("item_mode", ItemMode.class);
-
-    /**
-     * Rule changes applied to a match (no PvP, double items). Any number can be active at once.
-     */
-    public static final RegistryKey<GameMode> GAME_MODE = create("game_mode", GameMode.class);
 
     /**
      * What the map does to a match (Rising Lava, Fragile Blocks). Any number can be active at once.
