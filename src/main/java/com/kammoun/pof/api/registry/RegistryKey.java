@@ -1,6 +1,7 @@
 package com.kammoun.pof.api.registry;
 
 import com.kammoun.pof.api.POFAPI;
+import com.kammoun.pof.api.achievement.Achievement;
 import com.kammoun.pof.api.cosmetic.CelebrationEffectType;
 import com.kammoun.pof.api.cosmetic.Cosmetic;
 import com.kammoun.pof.api.kit.Kit;
@@ -44,6 +45,11 @@ public final class RegistryKey<T extends Keyed> implements Keyed {
      * Cages, death cries, kill messages and win celebrations, all in one registry.
      */
     public static final RegistryKey<Cosmetic> COSMETIC = create("cosmetic", Cosmetic.class);
+
+    /**
+     * Achievements, both POF's own from {@code achievements.yml} and those addons register.
+     */
+    public static final RegistryKey<Achievement> ACHIEVEMENT = create("achievement", Achievement.class);
 
     private final Key key;
     private final Class<T> type;
