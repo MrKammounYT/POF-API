@@ -3,8 +3,8 @@ package com.kammoun.pof.api.addon;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * The entry point of a POF addon: a jar in {@code plugins/POF/addons} that adds item modes, map modes, game
- * modes or celebration effects.
+ * The entry point of a POF addon: a jar in {@code plugins/POF/addons} that adds item modes, map modes,
+ * celebration effects or achievements.
  * <p>
  * An addon is <strong>not</strong> a Bukkit plugin. POF loads it itself, each in its own class loader, and it
  * needs no {@code plugin.yml} — only an {@code addon.yml} naming this class:
